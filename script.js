@@ -82,8 +82,13 @@ document.querySelectorAll('[data-lightbox]').forEach((trigger) => {
   trigger.addEventListener('click', () => {
     if (!lightbox || !lightboxImage) return;
     lastLightboxTrigger = trigger;
+    const sourceImage = trigger.querySelector('img');
     lightboxImage.src = trigger.dataset.lightbox || '';
-    lightboxImage.alt = trigger.querySelector('img')?.alt || 'Realizacja Wnętrza BBM';
+    lightboxImage.alt = sourceImage?.alt || 'Realizacja Wnętrza BBM';
+    if (sourceImage?.width && sourceImage?.height) {
+      lightboxImage.width = sourceImage.width;
+      lightboxImage.height = sourceImage.height;
+    }
     if (lightboxCaption) lightboxCaption.textContent = trigger.dataset.caption || '';
     lightbox.classList.add('is-open');
     lightbox.setAttribute('aria-hidden', 'false');
@@ -102,8 +107,24 @@ window.addEventListener('keydown', (event) => {
   }
 
   if (event.key === 'Tab' && lightbox?.classList.contains('is-open')) {
-    event.preventDefault();
-    lightboxClose?.focus();
+    const focusable = [...lightbox.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])')]
+      .filter((element) => element.getClientRects().length > 0);
+
+    if (!focusable.length) {
+      event.preventDefault();
+      lightboxClose?.focus();
+      return;
+    }
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
   }
 });
 

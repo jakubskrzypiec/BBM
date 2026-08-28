@@ -1,0 +1,13 @@
+Obrazy do pobrania z wnetrzabbm.pl — mapowanie docelowych nazw lokalnych
+
+MEDON_Anna-_aranzacja_13-scaled.jpg -> aranzacja-domu.webp
+RAJCA_Virginia-lazienka_37-scaled.jpg -> lazienka.webp
+KLITA_Aneta-_aranzacja_parter_71-scaled.jpg -> parter-domu.webp
+KOWALIK_Sebestian-_aranzacja_1-scaled.jpg -> kuchnia.webp
+GRUPA_PEDIATRYCZNA_-_wersja_pelna_36.png -> lokal-pediatryczny.webp
+salon-z-kuchnia-2-1.jpg -> salon-z-kuchnia.webp
+pokoj-dzienny-2-1.jpg -> pokoj-dzienny.webp
+korytarz-2.jpg -> dom-z-antresola-korytarz.webp
+beata-300x300.png -> beata-bandura-maciag.webp
+
+UWAGA: pliki nie zostały automatycznie pobrane, ponieważ środowisko wykonawcze nie ma dostępu sieciowego do binarnych zasobów wnetrzabbm.pl. Obecne src/data-lightbox pozostają zdalne, aby strona nadal działała.
